@@ -1,0 +1,104 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyN+d0P+2wmVI0WZzhxsWBvO",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/HDN-Praharshini123/NLP/blob/main/experiment%2017\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HK1lK1ILcFep",
+        "outputId": "e22e577d-42a7-440c-de5c-961fd2987d9d"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Word: car\n",
+            "Number of synsets: 5\n",
+            "\n",
+            "Synset: car.n.01\n",
+            "Definition: a motor vehicle with four wheels; usually propelled by an internal combustion engine\n",
+            "Examples: ['he needs a car to get to work']\n",
+            "\n",
+            "Synset: car.n.02\n",
+            "Definition: a wheeled vehicle adapted to the rails of railroad\n",
+            "Examples: ['three cars had jumped the rails']\n",
+            "\n",
+            "Synset: car.n.03\n",
+            "Definition: the compartment that is suspended from an airship and that carries personnel and the cargo and the power plant\n",
+            "Examples: []\n",
+            "\n",
+            "Synset: car.n.04\n",
+            "Definition: where passengers ride up and down\n",
+            "Examples: ['the car was on the top floor']\n",
+            "\n",
+            "Synset: cable_car.n.01\n",
+            "Definition: a conveyance for passengers or freight on a cable railway\n",
+            "Examples: ['they took a cable car to the top of the mountain']\n",
+            "Synonyms: ['cable_car', 'car']\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data]   Package wordnet is already up-to-date!\n",
+            "[nltk_data] Downloading package omw-1.4 to /root/nltk_data...\n",
+            "[nltk_data]   Package omw-1.4 is already up-to-date!\n"
+          ]
+        }
+      ],
+      "source": [
+        "import nltk\n",
+        "from nltk.corpus import wordnet\n",
+        "#Download wordnet\n",
+        "nltk.download('wordnet')\n",
+        "nltk.download('omw-1.4')\n",
+        "#word to explore\n",
+        "word =\"car\"\n",
+        "#Retrive synsets\n",
+        "synsets=wordnet.synsets(word)\n",
+        "print(\"Word:\",word)\n",
+        "print(\"Number of synsets:\",len(synsets))\n",
+        "#Display each synset\n",
+        "for synset in synsets:\n",
+        "    print(\"\\nSynset:\",synset.name())\n",
+        "    print(\"Definition:\",synset.definition())\n",
+        "    print(\"Examples:\",synset.examples())\n",
+        "# Display synonyms\n",
+        "synonyms=synset.lemmas()\n",
+        "print(\"Synonyms:\",[lemma.name()for lemma in synonyms])\n",
+        "\n"
+      ]
+    }
+  ]
+}
