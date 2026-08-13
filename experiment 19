@@ -1,0 +1,83 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMEc+KN1RNwBHsTOfpsHfN9",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/HDN-Praharshini123/NLP/blob/main/experiment%2019\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NuLPRfy-k1CT",
+        "outputId": "7c4b8aec-7c6d-4bb4-efff-90f4582d312f"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data] Downloading package omw-1.4 to /root/nltk_data...\n"
+          ]
+        },
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "sentence:  i went to the bank to deposit money\n",
+            "ambiguous word: bank\n",
+            "selected sense: savings_bank.n.02\n",
+            "defination: a container (usually with a slot in the top) for keeping money at home\n"
+          ]
+        }
+      ],
+      "source": [
+        "import nltk\n",
+        "from nltk.wsd import lesk\n",
+        "from nltk.corpus import wordnet\n",
+        "#download required NLTK data\n",
+        "nltk.download('wordnet')\n",
+        "nltk.download('omw-1.4')\n",
+        "#sentence\n",
+        "sentence=\" i went to the bank to deposit money\"\n",
+        "#covert sentence into words\n",
+        "words=sentence.split()\n",
+        "#apply lesk algorithm to the word\"bank\"\n",
+        "result=lesk(words,\"bank\")\n",
+        "#display the result\n",
+        "print(\"sentence:\",sentence)\n",
+        "print(\"ambiguous word: bank\")\n",
+        "if result:\n",
+        "  print(\"selected sense:\",result.name())\n",
+        "  print(\"defination:\",result.definition())\n",
+        "else:\n",
+        "  print(\"no sense found\")"
+      ]
+    }
+  ]
+}
